@@ -16,6 +16,7 @@ gem 'uglifier'
 gem 'webpacker'
 
 group :development do
+  gem 'dotenv-rails'
   gem 'web-console', '>= 3.3.0'
 end
 
@@ -28,5 +29,4 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.9.1'
