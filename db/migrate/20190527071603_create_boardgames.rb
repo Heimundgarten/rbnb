@@ -5,6 +5,7 @@ class CreateBoardgames < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :year
       t.float :price_per_day
+
       t.references :user, foreign_key: true
 
       t.timestamps

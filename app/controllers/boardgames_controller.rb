@@ -1,0 +1,3 @@
+class BoardgamesController < ApplicationController
+
+end
