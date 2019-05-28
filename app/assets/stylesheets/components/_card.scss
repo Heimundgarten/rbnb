@@ -1,30 +1,78 @@
-.card {
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  background-position: center;
-  color: white;
-  position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))
+// CSS for the individual card
+
+.card-product {
+  overflow: hidden;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
 }
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+
+.card-product img {
+  height: 100%;
+  width: 150px;
+  object-fit: cover;
 }
-.card-description h2 {
-  font-size: 24px;
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
 }
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
 }
-.card-link:hover {
-  opacity: 0.1;
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+
+// CSS for the grid of the cards
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  flex-grow: 1;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
 }

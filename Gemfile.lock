@@ -45,8 +45,8 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.5.1.1)
       execjs
-    bcrypt (3.1.12)
     aws_cf_signer (0.1.3)
+    bcrypt (3.1.12)
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -193,11 +193,11 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    warden (1.2.8)
-      rack (>= 2.0.6)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    warden (1.2.8)
+      rack (>= 2.0.6)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -217,9 +217,9 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
-  devise
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
+  devise
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.0)
