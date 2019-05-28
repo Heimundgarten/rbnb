@@ -1,23 +1,21 @@
 
 
 puts 'Cleaning database...'
-# Boardgame.destroy_all
-# Review.destroy_all
-# Booking.destroy_all
-# sleep(2)
-# puts 'Creating user...'
-# 15.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     address: Faker::Address.full_address,
-#     email: Faker::Internet.free_email,
-#     created_at: Faker::Date.backward(54321),
-#     encrypted_password: Faker::Internet.password,
-#     photo: Faker::Placeholdit.image('50x50', 'jpg')
-#   )
-#   user.save!
-# end
+
+sleep(2)
+puts 'Creating user...'
+15.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.full_address,
+    email: Faker::Internet.free_email,
+    created_at: Faker::Date.backward(54321),
+    encrypted_password: Faker::Internet.password,
+    # photo: Faker::Placeholdit.image('50x50', 'jpg')
+  )
+  user.save!
+end
 
 
 sleep(2)
