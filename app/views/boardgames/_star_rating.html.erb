@@ -1,0 +1,7 @@
+<% @reviews = Review.last(5).reverse %>
+<% @reviews.each do | review| %>
+<% stars = review.rating.to_i %>
+  <% stars.each do |star| %>
+  <i class="far fa-star"></i>
+  <% end %>
+<% end %>

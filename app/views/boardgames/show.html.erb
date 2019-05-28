@@ -28,26 +28,24 @@ show a map where the game is located
   </div>
 
   <div class="card">
-    <div class="notification">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-      <div class="notification-content">
-        <% @reviews = Review.all.reverse %>
-        <% 5.@reviews.each do | review| %>
-        <%= review.rating  %>
-        <%= review.content %>
-        <% end %>
-        <p><small><%= Review.last.rating %></small></p>
-        <p><%= Review.last.content %></p>
+    <% @reviews = Review.last(5).reverse %>
+    <% @reviews.each do | review| %>
+      <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
+            <div class="notification-content">
+              <p><%#= render 'star_rating' %></p>
+              <p><%= review.rating %></p>
+              <p>"<%= review.content %>"</p>
+            </div>
+          <div class="notification-actions">
+            <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+            <a href="<%= link_to 'Destroy',  boardgame_path,
+              data: { confirm: 'Are you sure?' }, method: :delete %>">Delete <i class="far fa-trash-alt"></i>
+            </a>
+        </div>
       </div>
-
-      <div class="notification-actions">
-        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-        <a href="#"><%= link_to 'Destroy',  boardgame_path,
-          data: { confirm: 'Are you sure?' }, method: :delete %>
-          <i class="far fa-trash-alt"></i>
-        </a>
-      </div>
-    </div>
+    <% end %>
 
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
@@ -57,10 +55,7 @@ show a map where the game is located
 
       <div class="notification-actions">
         <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-        <a href="#"><%= link_to 'Destroy',  boardgame_path,
-          data: { confirm: 'Are you sure?' }, method: :delete %>
-          <i class="far fa-trash-alt"></i>
-        </a>
+        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
       </div>
     </div>
   </div>
