@@ -15,7 +15,6 @@ class BoardgamesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @boardgame = Boardgame.create(boardgame_params)
-    raise
     if @boardgame.save
       redirect_to boardgame_path(@boardgame)
     else
