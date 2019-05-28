@@ -16,15 +16,14 @@ class BoardgamesController < ApplicationController
   end
 
   def create
-
     @user = User.find(current_user.id)
     @boardgame = Boardgame.new(boardgame_params)
     @boardgame.user = @user
     authorize @boardgame
-     #@boardgame.user = current_user
-    
+    # @boardgame.user = current_user
+
     if @boardgame.save
-      redirect_to boardgame_path(@boardgame), notice: 'The boardgame was successfully added'
+      redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully added'
     else
       render :new
     end
@@ -38,7 +37,7 @@ class BoardgamesController < ApplicationController
     authorize @boardgame
     # @boardgame = Boardgame.update(boardgame_params)
     if @boardgame.update(boardgame_params)
-      redirect_to boardgame_path(@boardgame), notice: 'The boardgame was successfully updated'
+      redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully updated'
     else
       render :edit
     end
@@ -47,7 +46,7 @@ class BoardgamesController < ApplicationController
   def destroy
     authorize @boardgame
     @boardgame.destroy
-    redirect_to boardgames_path, notice: 'The boardgame was successfully deleted'
+    redirect_to boardgames_path, alert: 'The boardgame was successfully deleted'
   end
 
   private

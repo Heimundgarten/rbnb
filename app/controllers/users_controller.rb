@@ -2,23 +2,27 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :destroy]
 
   def show
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def update
-    @user = User.update(user_params)
-    if @user.save
-      redirect_to user_path(@user)
+    authorize @user
+    # @user = User.update(user_params)
+    if @user.update(user_params)
+      redirect_to user_path(@user), alert: 'Your profile was successfully updated'
     else
       render :edit
     end
   end
 
   def destroy
+    authorize @user
     @user.destroy
-    redirect_to users_path
+    redirect_to root_path, alert: 'Your profile was successfully deleted'
   end
 
   private
