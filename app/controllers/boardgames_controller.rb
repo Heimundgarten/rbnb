@@ -3,7 +3,7 @@ class BoardgamesController < ApplicationController
 
   def index
     @boardgame = policy_scope(Boardgame)
-    # @boardgames = Boardgame.all
+    @boardgames = Boardgame.all
   end
 
   def show
