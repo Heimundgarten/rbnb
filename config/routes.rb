@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   devise_for :users
-  root to: 'pages#home'
-=======
   root to: 'boardgames#index'
->>>>>>> master
-  # devise_for :users
 
   resources :boardgames  do
     resources :bookings, only: [:new, :create]
