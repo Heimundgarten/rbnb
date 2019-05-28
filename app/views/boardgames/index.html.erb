@@ -1,1 +1,26 @@
-<h1>This is boardgame new</h1>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.1) 0%, rgba(0,36,61,0.5) 50%), url('<%= image_path 'boardgames.jpg' %>');">
+  <div class="banner-content">
+    <h1>GameNight</h1>
+    <p>   Awesome boardgames for an evening with </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+  <div class="row">
+    <% @boardgames.each do |boardgame| %>
+      <div class="col-xs-12 col-sm-6 col-md-3 card">
+        <%= cl_image_tag boardgame.photo,
+          width: 400, height: 300, crop: :fill %>
+            <div class="card-description">
+              <h2><%= boardgame.name %></h2>
+            </div>
+          <%= link_to "", boardgame_path(boardgame), class: 'card-link' %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+
