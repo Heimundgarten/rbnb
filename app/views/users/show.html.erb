@@ -1,1 +1,50 @@
-<%= @user.email %>
+
+<div class="container">
+
+  <!-- User info section -->
+  <div class="user-info">
+    <id class="avatar-user">
+      <%= simple_form_for(@user) do |f| %>
+        <%= cl_image_tag @user.photo, class: "avatar-max "%>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.button :submit, :value => "Add Picture" , :class => "btn btn-success"%>
+      <% end %>
+    </id>
+
+    <div id="profile-info">
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+      <p> E-mail: <%= @user.email %></p>
+      <p> Address: <%= @user.address %> </p>
+    </div>
+  </div>
+
+  <!-- User boardgames section -->
+  <div class="user-boardgames">
+    <h2>My Bookings</h2>
+    <% @user.boardgames.each do |boardgame| %>
+      <ul>
+        <li> <%= link_to boardgame.name, boardgame_path(boardgame) %></li>
+      </ul>
+    <% end %>
+  </div>
+
+  <!-- User reviews section -->
+  <div class="user-reviews">
+    <h2>My Reviews</h2>
+    <% @user.reviews.each do |review| %>
+      <ul>
+        <li><%= review.content %> : <%= review.rating %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+
+<%#= cl_image_tag("sample", width: 400, height: 300, crop: :fill) %>
+<%#= simple_form_for(@user) do |f| %>
+<%#= f.input :photo %>
+<%#= f.input :photo_cache, as: :hidden %>
+<%# end %>
+
+
