@@ -7,12 +7,24 @@ show the reviews of the game
 create a new review in the show of reviews (content/rating)
 boardgame show edit button
 boardgame show delete button
-show rented/not rented toggle
-with modal when rentend "have fun"
-with modal wenn returned 'thanks for returning'
+
 show a map where the game is located
 
 
  -->
+<div class="card">
+  <div class="card">
+    <%= image_tag @boardgame.photo, alt: @boardgame.name %>
+  </div>
+  <div class="car">
+    <%= @boardgame.name %>
+    <%= @boardgame.description %>
+    <%= @boardgame.year %>
+  </div>
+  <div class="card">
+    <%= render 'availability_toggle' %>
+  </div>
+</div>
 
- <%= render 'review_form' %>
+
+ <%#= render 'review_form' %>
