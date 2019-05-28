@@ -4,9 +4,9 @@
   <%= f.input :year, collection: (1970..2019), prompt: "Select year of game edition"%>
   <%= f.label :price_per_day %>
   <%= f.number_field :price_per_day, :class => 'text_field', :step => 0.1, placeholder: "Price per day" %>
-  <%= f.input :photo, item_label_class: 'create' %>
+  <%= f.input :photo, item_label_class: 'create', :tags => "boardgame" %>
   <%= f.input :photo_cache , as: :hidden %>
-  <%= f.button :submit, :value => "add game" , :class => "create"%>
+  <%= f.button :submit, :value => "add game" , :class => "create" %>
 <% end %>
 
 

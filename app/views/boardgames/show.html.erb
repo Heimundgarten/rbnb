@@ -7,24 +7,61 @@ show the reviews of the game
 create a new review in the show of reviews (content/rating)
 boardgame show edit button
 boardgame show delete button
-
 show a map where the game is located
-
-
  -->
-<div class="card">
+
   <div class="card">
-    <%= image_tag @boardgame.photo, alt: @boardgame.name %>
+    <div class="card">
+      <%#= image_tag Boardgame.photo, alt: @boardgame.name %>
+    </div>
+    <div class="card">
+      <%= @boardgame.name %>
+      <%= @boardgame.description %>
+      <%= @boardgame.year %>
+    </div>
+    <div class="card">
+      <%#= render 'availability_toggle' %>
+      <p>toggle should go here</p>
+    </div>
   </div>
-  <div class="car">
-    <%= @boardgame.name %>
-    <%= @boardgame.description %>
-    <%= @boardgame.year %>
-  </div>
+
   <div class="card">
-    <%= render 'availability_toggle' %>
-  </div>
-</div>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+      <div class="notification-content">
+        <% reviews = Review.all.reverse %>
+        <% 5.reviews.each do |review| %>
+        <p><small><%= review.updated_at %></small></p>
+        <p><%= review.content %></p>
+        <% end %>
+      </div>
+
+      <div class="notification-actions">
+        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <a href="#"><%= link_to 'Destroy',  boardgame_path,
+          data: { confirm: 'Are you sure?' }, method: :delete %>
+          <i class="far fa-trash-alt"></i>
+        </a>
+      </div>
+    </div>
 
 
- <%#= render 'review_form' %>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+      <div class="notification-content">
+        <p><%= render 'review_form' %></p>
+      </div>
+
+      <div class="notification-actions">
+        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <a href="#"><%= link_to 'Destroy',  boardgame_path,
+          data: { confirm: 'Are you sure?' }, method: :delete %>
+          <i class="far fa-trash-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
