@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'boardgames#index'
-  # devise_for :users
 
   resources :boardgames  do
     resources :bookings, only: [:new, :create]

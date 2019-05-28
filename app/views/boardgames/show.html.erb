@@ -9,15 +9,17 @@ boardgame show edit button
 boardgame show delete button
 show a map where the game is located
  -->
-
+<div class="container">
   <div class="card">
     <div class="card">
-      <%#= image_tag Boardgame.photo, alt: @boardgame.name %>
+      <%= cl_image_tag @boardgame.photo, height: 300, width: 400, crop: :fill, alt: @boardgame.name %>
     </div>
     <div class="card">
-      <%= @boardgame.name %>
-      <%= @boardgame.description %>
-      <%= @boardgame.year %>
+      <ul>
+        <li><%= @boardgame.name %></li>
+        <li><%= @boardgame.description %></li>
+        <li><%= @boardgame.year %></li>
+      </ul>
     </div>
     <div class="card">
       <%#= render 'availability_toggle' %>
@@ -29,11 +31,13 @@ show a map where the game is located
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
       <div class="notification-content">
-        <% reviews = Review.all.reverse %>
-        <% 5.reviews.each do |review| %>
-        <p><small><%= review.updated_at %></small></p>
-        <p><%= review.content %></p>
+        <% @reviews = Review.all.reverse %>
+        <% 5.@reviews.each do | review| %>
+        <%= review.rating  %>
+        <%= review.content %>
         <% end %>
+        <p><small><%= Review.last.rating %></small></p>
+        <p><%= Review.last.content %></p>
       </div>
 
       <div class="notification-actions">
@@ -45,11 +49,10 @@ show a map where the game is located
       </div>
     </div>
 
-
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
       <div class="notification-content">
-        <p><%= render 'review_form' %></p>
+        <p><%#= render 'review_form' %></p>
       </div>
 
       <div class="notification-actions">
@@ -61,6 +64,7 @@ show a map where the game is located
       </div>
     </div>
   </div>
+</div>
 
 
 
