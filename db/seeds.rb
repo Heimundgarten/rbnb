@@ -43,7 +43,7 @@ puts 'Creating bookings...'
     date_borrowed:Faker::Date.between_except(1.year.ago, 20.days.ago, 21.days.ago),
     date_returned:Faker::Date.between_except(19.days.ago, 2.days.ago, Date.today),
     user_id: rand(1..2),
-    boardgame_id: rand(1..3),
+    boardgame_id: rand(1.10),
     created_at: Faker::Date.backward(54321)
   )
   booking.save!
@@ -55,7 +55,7 @@ rand(4..8).times do
   review = Review.create(
     content: Faker::Movies::VForVendetta.quote,
     rating: rand(1..5),
-    booking_id: rand(1..20)
+    booking_id: rand(1..10)
   )
 end
 
