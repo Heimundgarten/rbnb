@@ -46,20 +46,28 @@ show a map where the game is located
       <div class="notification-content">
         <p><%= render 'review_form' %></p>
       </div>
+      <div class="notification-actions">
+        <%# if policy(@review).destroy? %>
+          <%#= link_to edit_boardgame_path(@boardgame) do %>
+<!--             <p>Delete <i class="far fa-trash-alt"></i></p> -->
+          <%# end %>
+        <%# end %>
+      </div>
     </div>
     <% end %>
-
+  <div class="card">
     <div class="card">
-      <div class="card">
-        <%= link_to 'Update', edit_boardgame_path, method: :patch %>
-      </div>
-      <div class="card">
-        <%= link_to 'Destroy', boardgames_path, data: { confirm: 'Are you sure?' }, method: :delete %>
-      </div>
+      <% if policy(@boardgame).update? %>
+        <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
+      <% end %>
     </div>
-
+    <div class="card">
+      <% if policy(@boardgame).destroy? %>
+        <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), data: { confirm: 'Are you sure?' }, method: :delete %>
+      <% end %>
+    </div>
   </div>
-
+</div>
 
 
 
