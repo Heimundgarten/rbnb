@@ -3,68 +3,74 @@ create a new review in the show of reviews (content/rating)
 boardgame show edit button
 boardgame show delete button
 show a map where the game is located
- -->
+-->
 <div class="container">
 
   <div class="card-trip">
     <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= @boardgame.name %></h2>
-          <p><small><%= @boardgame.year %></small></p>
-          <p><%= @boardgame.description %></p>
-        </div>
-        <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2>
-              <%#= render 'availability_toggle' %>
-        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @boardgame.name %></h2>
+        <p><small><%= @boardgame.year %></small></p>
+        <p><%= @boardgame.description %></p>
       </div>
-              <h3>toggle should go here</h3>
+      <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2>
+      <%#= render 'availability_toggle' %>
+      <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+    </div>
+    <h3>toggle should go here</h3>
   </div>
 
 
   <div class="card">
-    <% @reviews = Review.last(5).reverse %>
+    <% @reviews = @boardgame.reviews.last(5).reverse %>
     <% @reviews.each do | review| %>
-      <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-          <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
-            <div class="notification-content">
-              <% review.rating.times do |s| %>
-              <i class="fas fa-star"></i>
-              <% end %>
-              <p>"<%= review.content %>"</p>
-              <p>"<%= review.id %>"</p>
-            </div>
-          <div class="notification-actions">
-            <%#= link_to "delete", review_path(@review), method: :delete %>
-              <a href="#">Delete <i class="far fa-trash-alt"></i></a>
-        </div>
-      </div>
-    <% end %>
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
       <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
       <div class="notification-content">
-        <p><%#= render 'review_form' %></p>
+        <% review.rating.times do |s| %>
+        <i class="fas fa-star"></i>
+        <% end %>
+        <p><%= truncate(review.content, length: 100) %></p>
+        <p>"<%= review.id %>"</p>
+      </div>
+      <div class="notification-actions">
+        <%#= link_to "delete", review_path(@review), method: :delete %>
+        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+      </div>
+    </div>
+    <% end %>
+    <% if current_user.has_booking_to_review? %>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
+      <div class="notification-content">
+        <p><small>9th January</small></p>
+        <p><%= render 'review_form' %></p>
       </div>
 
       <div class="notification-actions">
-        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
+        <%# if policy(@review).destroy? %>
+          <%#= link_to edit_boardgame_path(@boardgame) do %>
+<!--             <p>Delete <i class="far fa-trash-alt"></i></p> -->
+          <%# end %>
+        <%# end %>
       </div>
     </div>
-  </div>
-
+    <% end %>
   <div class="card">
     <div class="card">
-      <%= link_to 'Update', edit_boardgame_path, method: :patch %>
+      <% if policy(@boardgame).update? %>
+        <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
+      <% end %>
     </div>
     <div class="card">
-      <%= link_to 'Destroy', boardgames_path, data: { confirm: 'Are you sure?' }, method: :delete %>
+      <% if policy(@boardgame).destroy? %>
+        <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), data: { confirm: 'Are you sure?' }, method: :delete %>
+      <% end %>
     </div>
   </div>
-
 </div>
-
 
 
 

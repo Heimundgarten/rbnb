@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_booking #, except: [:destroy]
+  # before_action :set_booking #, except: [:destroy]
 
   def show
     @reviews = Review.all
@@ -13,11 +13,11 @@ class ReviewsController < ApplicationController
   # not so sure on this method, please review carefully
   def create
     @review = Review.new(review_params)
-    @review.booking = @booking
+    # @review.booking = @booking
     authorize @review
 
     if @review.save
-      redirect_to boardgame_path(@booking.boardgame), alert: 'Your review was successfully added'
+      redirect_to boardgame_path(@review.booking.boardgame), alert: 'Your review was successfully added'
     else
       render :new
     end
@@ -31,11 +31,11 @@ class ReviewsController < ApplicationController
 
   private
 
-  def set_booking
-    @booking = booking.find(params[:booking_id])
-  end
+  # def set_booking
+  #   @booking = booking.find(params[:booking_id])
+  # end
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating, :booking_id)
   end
 end

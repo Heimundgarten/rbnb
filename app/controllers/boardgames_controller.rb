@@ -1,5 +1,6 @@
 class BoardgamesController < ApplicationController
   before_action :set_boardgame, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @boardgame = policy_scope(Boardgame)
@@ -17,6 +18,7 @@ class BoardgamesController < ApplicationController
 
   def show
     authorize @boardgame
+    @review = Review.new
   end
 
   def new
@@ -29,7 +31,7 @@ class BoardgamesController < ApplicationController
     @boardgame = Boardgame.new(boardgame_params)
     @boardgame.user = @user
     authorize @boardgame
-    
+
     if @boardgame.save
       redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully added'
     else
