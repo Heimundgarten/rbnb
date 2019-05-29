@@ -57,12 +57,12 @@ show a map where the game is located
   <div class="card">
     <div class="card">
       <% if policy(@boardgame).update? %>
-        <%= link_to 'Update', edit_boardgame_path(@boardgame), method: :patch %>
+        <%= link_to 'Update', edit_boardgame_path(@boardgame) %>
       <% end %>
     </div>
     <div class="card">
       <% if policy(@boardgame).destroy? %>
-        <%= link_to 'Destroy', destroy_boardgame_path(@boardgame), data: { confirm: 'Are you sure?' }, method: :delete %>
+        <%= link_to 'Destroy', boardgame_path(@boardgame), data: { confirm: 'Are you sure?' }, method: :delete %>
       <% end %>
     </div>
   </div>

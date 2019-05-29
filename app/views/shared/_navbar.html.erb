@@ -16,10 +16,10 @@
       <li class="nav-item active">
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
-      <li class = "nav-item">
-        <%= link_to "Add Boardgame", new_boardgame_path, class: "nav-link" %>
-      </li>
       <% if current_user %>
+        <li class = "nav-item">
+          <%= link_to "Add Boardgame", new_boardgame_path, class: "nav-link" %>
+        </li>
         <li class = "nav-item">
           <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
         </li>
