@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :set_booking #, except: [:destroy]
 
+  def show
+    @reviews = Review.all
+  end
+
   def new
     @review = Review.new
     authorize @review

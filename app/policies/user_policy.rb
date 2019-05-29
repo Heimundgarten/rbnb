@@ -1,5 +1,4 @@
 class UserPolicy < ApplicationPolicy
-
   # do we need the Scope class at all since there is no user index view?
   class Scope < Scope
     def resolve
