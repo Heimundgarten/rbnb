@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :photo, PhotoUploader
+
   has_many :boardgames
   has_many :bookings
   has_many :reviews, through: :bookings
@@ -11,4 +13,6 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
+
+
 end
