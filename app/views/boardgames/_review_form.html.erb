@@ -1,10 +1,7 @@
 
 <%= simple_form_for @review do |f| %>
   <%= f.input :content, placeholder: 'Please add a review of the game...' %>
-  <%= f.input :rating %>
-  <%#= f.association :booking, collection: Review.review_info(current_user) %>
-  <%#= f.select :id, Booking.where(user: current_user).map { |review| ["#{review.boardgame.name}, from #{review.date_borrowed} till #{review.date_returned}"] }, include_blank: false %>
-  <%#= f.association :booking, collection: Booking.all.order(:date_borrowed)%>
+  <%= f.select :rating %>
   <select name='review[booking_id]'>
     <option>empty</option>
     <% Review.review_info(current_user).each do |booking| %>
