@@ -224,7 +224,7 @@ DEPENDENCIES
   cloudinary (~> 1.9.1)
   devise
   dotenv-rails
-  font-awesome-sass (~> 5.6.1)
+  font-awesome-sass (~> 5.8.1)
   geocoder
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
