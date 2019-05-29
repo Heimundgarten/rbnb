@@ -38,8 +38,20 @@
       </ul>
     <% end %>
   </div>
-</div>
 
+  <div class="card">
+    <div class="card">
+      <% if policy(@user).update? %>
+        <%= link_to 'Update profile', edit_user_path(@user) %>
+      <% end %>
+    </div>
+    <div class="card">
+      <% if policy(@user).destroy? %>
+        <%= link_to 'Delete profile', user_registration_path, data: { confirm: 'Are you sure?' }, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%#= cl_image_tag("sample", width: 400, height: 300, crop: :fill) %>
 <%#= simple_form_for(@user) do |f| %>
