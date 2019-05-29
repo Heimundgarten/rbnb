@@ -11,22 +11,25 @@
       <li class = "nav-item">
         <%= link_to "Add Boardgame", new_boardgame_path, class: "nav-link" %>
       </li>
-      <li>
+      <% if user_signed_in? %>
+      <li class ="nav-item active">
        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+       <% end %>
+      </li class ="nav-item">
+        <%= link_to "Home", boardgames_path, class: "nav-link" %>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
+      <% unless user_signed_in? %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-        </div>
-      </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to user_path(current_user.id) do  %>
+            <%= cl_image_tag current_user.photo, class: "avatar" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

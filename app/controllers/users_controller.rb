@@ -1,19 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user
 
-  def index
-    # @users = User.where.not(latitude: nil, longitude: nil)
-
-    # @markers = @users.map do |user|
-    #   {
-    #     lat: user.latitude,
-    #     lng: user.longitude,
-    #     infoWindow: render_to_string(partial: "infowindow", locals: { user: user })
-    #   }
-    # end
-    # raise
-  end
-
   def show
     authorize @user
   end
