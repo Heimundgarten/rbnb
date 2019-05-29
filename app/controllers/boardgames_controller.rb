@@ -4,6 +4,15 @@ class BoardgamesController < ApplicationController
   def index
     @boardgame = policy_scope(Boardgame)
     @boardgames = Boardgame.all
+
+    @users = User.where.not(latitude: nil, longitude: nil)
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "users/infowindow", locals: { user: user })
+      }
+    end
   end
 
   def show
@@ -16,13 +25,11 @@ class BoardgamesController < ApplicationController
   end
 
   def create
-
     @user = User.find(current_user.id)
     @boardgame = Boardgame.new(boardgame_params)
     @boardgame.user = @user
     authorize @boardgame
      #@boardgame.user = current_user
-    
     if @boardgame.save
       redirect_to boardgame_path(@boardgame), notice: 'The boardgame was successfully added'
     else
