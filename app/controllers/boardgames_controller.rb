@@ -21,7 +21,6 @@ class BoardgamesController < ApplicationController
     @boardgame.user = @user
     authorize @boardgame
      #@boardgame.user = current_user
-
     if @boardgame.save
       redirect_to boardgame_path(@boardgame), notice: 'The boardgame was successfully added'
     else
