@@ -1,51 +1,71 @@
 body {
-  background-color: #ffffff;
-}
-
-h2 {
-  text-align: center;
-}
-
-p {
-  font-size: 20px;
-}
-
-#user_photo {
-  position: absolute;
-  bottom: 50px;
-  left: 20px;
-}
-
-.photo-submit {
-  position: absolute;
-  left: 30px;
+  background-color: #fffcff;
 }
 
 .user-info {
   display: flex;
-  justify-content: space-around;
-  background-color: #6d8092;
-  color: #ffffff;
-  padding: 70px 0;
-  line-height: 35px;
+  padding: 40px;
+  margin: 0 auto;
+  position: relative;
+  // background-color: #fffcff;
+  // color: #ffffff;
+  // line-height: 35px;
 }
 
-.user-boardgames {
-  background-color: #f7dfcd;
-}
-
-.user-reviews {
-  background-color: #f7dfcd;
+.avatar-user {
+margin: 0 16px;
 }
 
 #profile-info {
-position: relative;
-top: 45px;
-right: 125px;
+  margin: 24px 40px;
 }
 
-form {
-position: relative;
-top: 25px;
-left: 150px;
+.label {
+  padding-right: 32px;
 }
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+// h2 {
+//   text-align: center;
+// }
+
+// p {
+//   font-size: 20px;
+// }
+
+// #user_photo {
+//   position: absolute;
+//   bottom: 50px;
+//   left: 20px;
+// }
+
+// .photo-submit {
+//   position: absolute;
+//   left: 30px;
+// }
+
+
+// .user-boardgames {
+//   background-color: #f7dfcd;
+// }
+
+// .user-reviews {
+//   background-color: #f7dfcd;
+// }
+
+// #profile-info {
+// position: relative;
+// top: 45px;
+// right: 125px;
+// }
+
+// form {
+// position: relative;
+// top: 25px;
+// left: 150px;
+// }

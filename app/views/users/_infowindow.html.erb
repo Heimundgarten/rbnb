@@ -1,8 +1,5 @@
 
 <% user.boardgames.each do |boardgame| %>
-    <p><strong><%= boardgame.name %></strong></p>
-    <p><%= boardgame.description.split[0..10].join(" ") %>..</p>
-    <% end %>
-
-
-
+  <p><strong><%= boardgame.name %></strong></p>
+  <p><%= boardgame.description.split[0..10].join(" ") %>..</p>
+<% end %>
