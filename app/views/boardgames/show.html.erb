@@ -23,7 +23,7 @@ show a map where the game is located
 
 
   <div class="card">
-    <% @reviews = Review.last(5).reverse %>
+    <% @reviews = @boardgame.reviews.last(5).reverse %>
     <% @reviews.each do | review| %>
       <div class="notification">
           <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
@@ -41,17 +41,6 @@ show a map where the game is located
         </div>
       </div>
     <% end %>
-    <div class="notification">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-      <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
-      <div class="notification-content">
-        <p><%#= render 'review_form' %></p>
-      </div>
-
-      <div class="notification-actions">
-        <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-      </div>
-    </div>
   </div>
 
   <div class="card">
