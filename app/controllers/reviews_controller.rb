@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
-    authorize @user
+    authorize @review
 
     if @review.save
       redirect_to boardgame_path(@booking.boardgame), alert: 'Your review was successfully added'

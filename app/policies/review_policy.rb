@@ -7,15 +7,7 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-  def show? # can be deleted since there is no show method in review controller?
-    true
-  end
-
   def create?
-    true
-  end
-
-  def update? # can be deleted since there is no show method in review controller?
     user_is_owner?
   end
 
@@ -26,6 +18,6 @@ class ReviewPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    user == record.user
+    user == record.booking.user
   end
 end

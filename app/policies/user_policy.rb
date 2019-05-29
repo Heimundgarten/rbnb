@@ -7,12 +7,9 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  # you can only view your own profile dashboard
   def show?
-    true
-  end
-
-  def create? # can be deleted because no new and create methods in controller?
-    true
+    user_is_owner?
   end
 
   def update?
@@ -26,6 +23,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    user == record.user
+    user == record
   end
 end
