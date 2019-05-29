@@ -4,6 +4,15 @@ class BoardgamesController < ApplicationController
   def index
     @boardgame = policy_scope(Boardgame)
     @boardgames = Boardgame.all
+
+    @users = User.where.not(latitude: nil, longitude: nil)
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "users/infowindow", locals: { user: user })
+      }
+    end
   end
 
   def show
