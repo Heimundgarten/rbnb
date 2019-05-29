@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [] do
-    resources :reviews, only: [:new, :delete]
+    resources :reviews, only: [:new]
   end
 
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :delete]
 
   resources :users, only: [:show, :edit, :update, :delete]
 

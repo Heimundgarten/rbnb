@@ -6,7 +6,7 @@ show a map where the game is located
 -->
 <div class="container">
 
-  <div class="card-trip">
+  <div class="card-trip p-2">
     <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
     <div class="card-trip-infos">
       <div>
@@ -22,7 +22,7 @@ show a map where the game is located
   </div>
 
 
-  <div class="card">
+  <div class="card p-2">
     <% @reviews = @boardgame.reviews.last(5).reverse %>
     <% @reviews.each do | review| %>
     <div class="notification">
@@ -33,7 +33,6 @@ show a map where the game is located
         <i class="fas fa-star"></i>
         <% end %>
         <p><%= truncate(review.content, length: 100) %></p>
-        <p>"<%= review.id %>"</p>
       </div>
       <div class="notification-actions">
         <%#= link_to "delete", review_path(@review), method: :delete %>
@@ -45,10 +44,8 @@ show a map where the game is located
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
       <div class="notification-content">
-        <p><small>9th January</small></p>
         <p><%= render 'review_form' %></p>
       </div>
-
       <div class="notification-actions">
         <%# if policy(@review).destroy? %>
           <%#= link_to edit_boardgame_path(@boardgame) do %>
