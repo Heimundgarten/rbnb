@@ -36,8 +36,7 @@ show a map where the game is located
               <p>"<%= review.id %>"</p>
             </div>
           <div class="notification-actions">
-            <%#= link_to Review.destroy(review.id) , boardgame_path,
-              data: { confirm: 'Are you sure?' }, method: :delete %>
+            <%#= link_to "delete", review_path(@review), method: :delete %>
               <a href="#">Delete <i class="far fa-trash-alt"></i></a>
         </div>
       </div>
