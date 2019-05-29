@@ -1,0 +1,6 @@
+
+<%= simple_form_for @booking, @boardgame_id  do |f| %>
+  <%= f.input :content, placeholder: 'Please add a review of the game...' %>
+  <%= f.input :rating %>
+  <%= f.button :submit, :value => "add review" , :class => "create"%>
+<% end %>
