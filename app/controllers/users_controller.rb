@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
+    # @photo_button = raw("<i class="fas fa-camera"></i>")
     authorize @user
   end
 

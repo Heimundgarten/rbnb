@@ -1,4 +1,3 @@
-
 <div class="container">
 
   <!-- User info section -->
@@ -6,16 +5,16 @@
     <id class="avatar-user">
       <%= simple_form_for(@user) do |f| %>
         <%= cl_image_tag @user.photo, class: "avatar-max "%>
-        <%= f.input :photo %>
+        <%= f.input_field :photo %>
         <%= f.input :photo_cache, as: :hidden %>
-        <%= f.button :submit, :value => "Add Picture" , :class => "btn btn-success"%>
+        <%= f.button :submit, :value => "Update your picture" , :class => "btn btn-light photo-submit"%>
       <% end %>
     </id>
 
     <div id="profile-info">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p> E-mail: <%= @user.email %></p>
       <p> Address: <%= @user.address %> </p>
+      <p> E-mail: <%= @user.email %></p>
     </div>
   </div>
 
