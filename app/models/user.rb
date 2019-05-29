@@ -14,5 +14,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :address, presence: true
 
-
+  def has_booking_to_review?
+    self.bookings.select{ |booking| !booking.review }.any?
+  end
 end

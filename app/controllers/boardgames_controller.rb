@@ -8,6 +8,7 @@ class BoardgamesController < ApplicationController
 
   def show
     authorize @boardgame
+    @review = Review.new
   end
 
   def new
@@ -20,7 +21,7 @@ class BoardgamesController < ApplicationController
     @boardgame = Boardgame.new(boardgame_params)
     @boardgame.user = @user
     authorize @boardgame
-    
+
     if @boardgame.save
       redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully added'
     else
