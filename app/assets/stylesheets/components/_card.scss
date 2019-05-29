@@ -7,6 +7,16 @@
   box-shadow: 0 0 2px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
+  padding: 16px;
+  position: relative;
+  .price {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+  }
+    &:hover {
+    text-decoration: none;
+  }
 }
 
 .card-product img {
@@ -21,23 +31,79 @@
   margin: 0;
 }
 
+.home-card-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#add-game h1 {
+  color: #32393B;
+  margin: 0 auto;
+}
+
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+
 }
 
-.card-product .card-product-infos {
+.card-product-infos {
   padding: 16px;
+  color: black;
+  margin: 0;
 }
+
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
 
 
 // CSS for the grid of the cards
 .cards {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
 }
@@ -66,13 +132,13 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
