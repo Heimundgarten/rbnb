@@ -29,10 +29,10 @@
 
     <div class="d-flex flex-column">
       <% if policy(@user).update? %>
-        <%= link_to 'Update profile', edit_user_path(@user), class:"btn btn-outline-primary btn-sm rounded m-2" %>
+        <%= link_to 'Update profile', edit_user_registration_path, class:"btn btn-outline-primary btn-sm rounded m-2" %>
       <% end %>
       <% if policy(@user).destroy? %>
-        <%= link_to 'Delete profile', user_registration_path, class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
+        <%= link_to 'Delete profile', user_registration_path, class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure you want to delete your account?' }, method: :delete %>
       <% end %>
     </div>
   </div>
@@ -93,7 +93,7 @@
   let avatarUser = document.querySelector(".avatar-max")
 
   updateUser.addEventListener('click', (element) => {
-    updateUser.preventDefault();
+    // updateUser.preventDefault();
     avatarUser.insertAdjacentHTML(
       'afterbegin',
      "<%= j render 'avatar_update_form' %>"
