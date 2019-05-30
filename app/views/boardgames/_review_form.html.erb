@@ -1,12 +1,13 @@
-
-<%= simple_form_for @review do |f| %>
+<div class="container">
+  <%= simple_form_for @review do |f| %>
   <%= f.input :content, placeholder: 'Please add a review of the game...' %>
-  <%= f.input :rating %>
+  <%= f.input :rating, collection: [ 1, 2, 3, 4, 5]%>
   <select name='review[booking_id]'>
     <option>empty</option>
     <% Review.review_info(current_user).each do |booking| %>
-        <option value="<%= booking[0] %>"><%= booking[1] %></option>
+    <option value="<%= booking[0] %>"><%= booking[1] %></option>
     <% end %>
   </select>
   <%= f.button :submit, :value => "add review" %>
-<% end %>
+  <% end %>
+</div>
