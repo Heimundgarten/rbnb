@@ -13,6 +13,8 @@ class ReviewsController < ApplicationController
   # not so sure on this method, please review carefully
   def create
     @review = Review.new(review_params)
+    @booking = Booking.find(params[:booking_id])
+    @review.booking = @booking
     # @review.booking = @booking
     authorize @review
 
@@ -36,6 +38,6 @@ class ReviewsController < ApplicationController
   # end
 
   def review_params
-    params.require(:review).permit(:content, :rating, :booking_id)
+    params.require(:review).permit(:content, :rating)
   end
 end
