@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     # @photo_button = raw("<i class="fas fa-camera"></i>")
     authorize @user
+    @bookings = current_user.bookings
   end
 
   def edit

@@ -44,14 +44,15 @@
     <br>
 
     <div class="cards">
-      <% @user.boardgames.each do |boardgame| %>
-        <%= link_to  boardgame_path(boardgame), class: "home-card-link" do %>
+      <% @bookings.each do |booking| %>
+        <%= link_to booking_path(booking.id), class: "home-card-link" do %>
           <div class="card-product rounded">
-              <%= cl_image_tag boardgame.photo %>
+              <%= cl_image_tag booking.boardgame.photo %>
             <div class="card-product-infos">
-              <h2><%= boardgame.name %></h2>
-              <p><%= truncate(boardgame.description, length: 100) %></p>
-              <p class="price"><strong>€ <%= boardgame.price_per_day %> / day</strong></p>
+              <h2><%= booking.boardgame.name %></h2>
+              <p><%= truncate(booking.boardgame.description, length: 100) %></p>
+
+              <p class="price"><strong>TotalPrice: € <%= booking.total_price %> </strong></p>
             </div>
           </div>
         <% end %>

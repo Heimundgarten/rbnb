@@ -23,6 +23,8 @@ class BoardgamesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+
     authorize @boardgame
     @review = Review.new
   end
