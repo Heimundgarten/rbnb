@@ -3,8 +3,14 @@ class BoardgamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    if params[:query].present?
+      @boardgames = Boardgame.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @boardgames = Boardgame.all
+    end
+
     @boardgame = policy_scope(Boardgame)
-    @boardgames = Boardgame.all
+
 
     @users = User.where.not(latitude: nil, longitude: nil)
     @markers = @users.map do |user|
