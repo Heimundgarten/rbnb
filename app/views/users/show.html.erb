@@ -1,61 +1,103 @@
 <div class="container">
 
   <!-- User info section -->
-  <div class="user-info">
-    <id class="avatar-user">
-      <%= simple_form_for(@user) do |f| %>
-        <%= cl_image_tag @user.photo, class: "avatar-max "%>
-        <%= f.input_field :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.button :submit, :value => "Update your picture" , :class => "btn btn-light photo-submit"%>
-      <% end %>
-    </id>
+  <div class="user-info d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
+      <id class="avatar-user">
+        <%= cl_image_tag @user.photo, class: "avatar-max" %>
+        <!-- choose photo and photo upload button will be rendered here -->
+      </id>
 
-    <div id="profile-info">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p> Address: <%= @user.address %> </p>
-      <p> E-mail: <%= @user.email %></p>
+      <div id="profile-info">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <hr>
+        <br>
+        <table>
+          <tbody>
+            <tr>
+              <th class="label">E-mail:</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th class="label">Address:</th>
+              <td><%= @user.address %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column">
+      <% if policy(@user).update? %>
+        <%= link_to 'Update profile', edit_user_registration_path, class:"btn btn-outline-primary btn-sm rounded m-2" %>
+      <% end %>
+      <% if policy(@user).destroy? %>
+        <%= link_to 'Delete profile', user_registration_path, class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure you want to delete your account?' }, method: :delete %>
+      <% end %>
     </div>
   </div>
 
   <!-- User boardgames section -->
   <div class="user-boardgames">
-    <h2>My Bookings</h2>
-    <% @user.boardgames.each do |boardgame| %>
-      <ul>
-        <li> <%= link_to boardgame.name, boardgame_path(boardgame) %></li>
-      </ul>
-    <% end %>
+    <h4 class="text-center">My Bookings</h4>
+    <hr class="w-50">
+    <br>
+
+    <div class="cards">
+      <% @user.boardgames.each do |boardgame| %>
+        <%= link_to  boardgame_path(boardgame), class: "home-card-link" do %>
+          <div class="card-product rounded">
+              <%= cl_image_tag boardgame.photo %>
+            <div class="card-product-infos">
+              <h2><%= boardgame.name %></h2>
+              <p><%= truncate(boardgame.description, length: 100) %></p>
+              <p class="price"><strong>€ <%= boardgame.price_per_day %> / day</strong></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <br>
   </div>
+
+<!--   <div class="user-boardgames">
+    <h4 class="text-center">Past Bookings</h4>
+    <hr class="w-50">
+    <p class="text-center">Feature coming soon...</p>
+    <br>
+  </div> -->
 
   <!-- User reviews section -->
   <div class="user-reviews">
-    <h2>My Reviews</h2>
+    <h4 class="text-center">My Reviews</h4>
+    <hr class="w-50">
     <% @user.reviews.each do |review| %>
-      <ul>
-        <li><%= review.content %> : <%= review.rating %></li>
-      </ul>
+      <table>
+        <tbody>
+          <tr>
+            <th class="label"><%= review.content %>:</th>
+            <td><%= review.rating %></td>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
+    <br>
   </div>
 
-  <div class="card">
-    <div class="card">
-      <% if policy(@user).update? %>
-        <%= link_to 'Update profile', edit_user_path(@user) %>
-      <% end %>
-    </div>
-    <div class="card">
-      <% if policy(@user).destroy? %>
-        <%= link_to 'Delete profile', user_registration_path, data: { confirm: 'Are you sure?' }, method: :delete %>
-      <% end %>
-    </div>
-  </div>
+
 </div>
 
-<%#= cl_image_tag("sample", width: 400, height: 300, crop: :fill) %>
-<%#= simple_form_for(@user) do |f| %>
-<%#= f.input :photo %>
-<%#= f.input :photo_cache, as: :hidden %>
-<%# end %>
 
+<script>
+  let updateUser = document.querySelector(".update-user")
+  let avatarUser = document.querySelector(".avatar-max")
+
+  updateUser.addEventListener('click', (element) => {
+    // updateUser.preventDefault();
+    avatarUser.insertAdjacentHTML(
+      'afterbegin',
+     "<%= j render 'avatar_update_form' %>"
+     )
+  });
+</script>
 
