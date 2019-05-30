@@ -1,27 +1,62 @@
 <div class="container">
-
+<!-- Boardgame information with image and description -->
   <div class="card-boardgame">
-    <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
-    <div>
-      <h2><%= @boardgame.name %></h2><p>(<%= @boardgame.year %>)</p>
-      <p><%= @boardgame.description %></p>
-      <br>
-      <h5>You can find this game at:</h5>
-      <p><%= @boardgame.user.first_name %> <%= @boardgame.user.last_name %></p>
-      <p><%= @boardgame.user.address %></p>
-      <!-- <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2> -->
-      <%#= render 'availability_toggle' %>
+    <div class="boardgame-info">
+      <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name, id: "boardgame-img" %>
+      <div class="description">
+        <h2><%= @boardgame.name %></h2><p>(<%= @boardgame.year %>)</p>
+        <p><%= @boardgame.description %></p>
+        <p class="card-trip-pricing text-right"><strong>€ <%= @boardgame.price_per_day %> / per day</strong></p>
+        <br>
+        <hr class="w-50">
+        <%#= render 'availability_toggle' %>
+      </div>
     </div>
-    <div>
+    <!-- Owner info and booking information -->
+    <div class="booking-info d-flex">
+      <!-- Owner info -->
+      <div class="owner-info">
+        <!-- syle this card, make it position relative and put elements accordingly -->
+          <h5><strong>You can find this game here:</strong></h5>
+          <%= cl_image_tag @boardgame.user.photo, class: "avatar" %>
+          <div class="information">
+            <p><%= @boardgame.user.first_name %> <%= @boardgame.user.last_name %></p>
+            <p><%= @boardgame.user.address %></p>
+          </div>
+      </div>
+      <!-- Booking info note: maybe flex grow 1 -->
+      <div class="booking-form">
+        <h5><strong>Book "<%= @boardgame.name %>" now</strong></h5>
+        <form action>
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">From:</span>
+            <input type="date" placeholder="12/10/2017" class="form-control">
+          </div>
 
+          <div class="input-group mt-2">
+            <span class="input-group-addon" id="basic-addon1">To:</span>
+            <input type="date" placeholder="18/10/2017" class="form-control">
+          </div>
+          <input type="submit" value="Book" class="btn btn-success w-100 mt-2">
+        </form>
+      </div>
     </div>
   </div>
+  <div class="action-buttons">
+    <% if policy(@boardgame).update? %>
+      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
+    <% end %>
+    <% if policy(@boardgame).destroy? %>
+      <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
+    <% end %>
+  </div>
+</div>
 
-    <!-- <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/> -->
 
+<!-- Reviews section -->
   <div class="card p-2">
     <% @reviews = @boardgame.reviews.last(5).reverse %>
-    <% @reviews.each do | review| %>
+    <% @reviews.each do |review| %>
     <div class="notification">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
       <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
@@ -45,31 +80,4 @@
       </div>
     </div>
     <% end %>
-
-     <div class="flat-show-card">
-    <h5>Book this game!</h5>
-    <form action>
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">From:</span>
-        <input type="date" placeholder="12/10/2017" class="form-control">
-      </div>
-
-      <div class="input-group mt-2">
-        <span class="input-group-addon" id="basic-addon1">To:</span>
-        <input type="date" placeholder="18/10/2017" class="form-control">
-      </div>
-      <input type="submit" value="Book" class="btn btn-success w-100 mt-2">
-    </form>
-  </div>
-
-  <div>
-    <% if policy(@boardgame).update? %>
-      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
-    <% end %>
-    <% if policy(@boardgame).destroy? %>
-      <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
-    <% end %>
-  </div>
 </div>
-
-
