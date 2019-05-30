@@ -109,6 +109,8 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 // Smallest device
