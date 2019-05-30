@@ -1,9 +1,3 @@
-<!--
-create a new review in the show of reviews (content/rating)
-boardgame show edit button
-boardgame show delete button
-show a map where the game is located
--->
 <div class="container">
 
   <div class="card-boardgame">
@@ -49,13 +43,6 @@ show a map where the game is located
       <div class="notification-content">
         <p><%= render 'review_form' %></p>
       </div>
-      <div class="notification-actions">
-        <%# if policy(@review).destroy? %>
-          <%#= link_to edit_boardgame_path(@boardgame) do %>
-<!--             <p>Delete <i class="far fa-trash-alt"></i></p> -->
-          <%# end %>
-        <%# end %>
-      </div>
     </div>
     <% end %>
 
@@ -84,6 +71,5 @@ show a map where the game is located
     <% end %>
   </div>
 </div>
-
 
 
