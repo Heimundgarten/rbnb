@@ -9,6 +9,24 @@
   align-items: center;
   padding: 16px;
   position: relative;
+  color: #282f36;
+  img {
+    height: 100%;
+    width: 150px;
+    object-fit: cover;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+      font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  }
   .price {
     position: absolute;
     bottom: 16px;
@@ -17,18 +35,6 @@
     &:hover {
     text-decoration: none;
   }
-}
-
-.card-product img {
-  height: 100%;
-  width: 150px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
 }
 
 .home-card-link {
@@ -43,55 +49,52 @@
   margin: 0 auto;
 }
 
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-
-}
-
 .card-product-infos {
   padding: 16px;
   color: black;
   margin: 0;
 }
 
-.card-trip {
+.card-boardgame {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.card-trip > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-
-.card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  img {
+    // height: 200px;
+    // width: 100%;
+    object-fit: scale-down;
+    position: center;
+  }
+  h2 {
+    // font-size: 16px;
+    // font-weight: bold;
+    margin: 0;
+  }
+  // p {
+  //   font-size: 12px;
+  //   opacity: .7;
+  //   margin: 0;
+  // }
 }
 
-.card-trip-infos .card-trip-user {
+.card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-trip-user {
   position: absolute;
   right: 16px;
   top: -20px;
@@ -106,6 +109,8 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 // Smallest device
