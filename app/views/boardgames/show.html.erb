@@ -9,16 +9,15 @@ show a map where the game is located
   <div class="card-trip p-2">
     <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
     <div class="card-trip-infos">
-      <div>
-        <h2><%= @boardgame.name %></h2>
-        <p><small><%= @boardgame.year %></small></p>
+<!--       <div>
+ -->        <h2><%= @boardgame.name %></h2>
+        <p><%= @boardgame.year %></p>
         <p><%= @boardgame.description %></p>
-      </div>
-      <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2>
+<!--       </div>
+ -->      <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2>
       <%#= render 'availability_toggle' %>
       <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
     </div>
-    <h3>toggle should go here</h3>
   </div>
 
 
@@ -55,17 +54,14 @@ show a map where the game is located
       </div>
     </div>
     <% end %>
-  <div class="card">
-    <div class="card">
-      <% if policy(@boardgame).update? %>
-        <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
-      <% end %>
-    </div>
-    <div class="card">
-      <% if policy(@boardgame).destroy? %>
-        <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), data: { confirm: 'Are you sure?' }, method: :delete %>
-      <% end %>
-    </div>
+
+  <div>
+    <% if policy(@boardgame).update? %>
+      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
+    <% end %>
+    <% if policy(@boardgame).destroy? %>
+      <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
+    <% end %>
   </div>
 </div>
 
