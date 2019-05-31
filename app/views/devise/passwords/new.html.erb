@@ -1,23 +1,14 @@
 <div class="container">
-    <h2 class="mb-5 mt-3 mx-auto">Forgot your password?</h2>
-    <div class="user-form-container mx-auto">
-
-        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= f.error_notification %>
-
-                <div class="form-inputs mb-5">
-                    <%= f.input :email,
-      required: true,
-      autofocus: true,
-      input_html: { autocomplete: "email" } %>
-                </div>
-
-                <div class="form-actions btn btn-primary mb-3 mr-5">
-                    <%= f.button :submit, "Send me reset password instructions" %>
-                </div>
-                <% end %>
-                    <br>
-
-                    <%= render "devise/shared/links" %>
+  <h2>Forgot your password?</h2>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs mb-5">
+      <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
     </div>
+    <div class="form-actions btn btn-primary mb-3 mr-5">
+      <%= f.button :submit, "Send me reset password instructions" %>
+    </div>
+  <% end %>
+  <br>
+  <%= render "devise/shared/links" %>
 </div>
