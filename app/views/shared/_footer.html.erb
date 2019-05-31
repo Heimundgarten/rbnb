@@ -1,4 +1,4 @@
-<div class="footer sticky-bottom">
+<div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-github"></i></a>
     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -6,12 +6,7 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
     <a href="#"><i class="fab fa-linkedin"></i></a>
   </div>
-  <div class="footer-links text-center">
-    <h3>We have a selection of <strong>
-      <%= Boardgame.all.count%> </strong> boardgames and counting!
-    </h3>
-  </div>
-  <div class="footer-links">
-    <%= link_to "Join today!", new_user_session_path, class: "nav-link"%>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i>
   </div>
 </div>

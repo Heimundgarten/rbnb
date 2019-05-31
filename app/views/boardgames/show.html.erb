@@ -52,7 +52,6 @@
   </div>
 </div>
 
-<<<<<<< HEAD
 
 <!-- Reviews section -->
   <div class="card p-2">
@@ -72,17 +71,6 @@
         <a href="#">Delete <i class="far fa-trash-alt"></i></a>
       </div>
     </div>
-=======
-<div class="card-reviews">
-  <h3>Here are the reviews</h3>
-    <% @reviews = @boardgame.reviews.last(5).reverse %>
-    <% @reviews.each do | review| %>
-    <div class="notification-content">
-      <% review.rating.times do |s| %>
-      <i class="fas fa-star"></i>
-      <p><%= truncate(review.content, length: 100) %></p>
-      <% end %>
->>>>>>> master
     <% end %>
     <% if current_user.has_booking_to_review? %>
     <div class="notification">
@@ -91,38 +79,5 @@
         <p><%= render 'review_form' %></p>
       </div>
     </div>
-<<<<<<< HEAD
     <% end %>
-=======
-  </div>
-
-  <div class="card">
-    <% if policy(@boardgame).update? %>
-      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
-    <% end %>
-     <div class="flat-show-card">
-    <h5>Book this game!</h5>
-    <form action>
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">From:</span>
-        <input type="date" placeholder="12/10/2017" class="form-control">
-      </div>
-
-      <div class="input-group mt-2">
-        <span class="input-group-addon" id="basic-addon1">To:</span>
-        <input type="date" placeholder="18/10/2017" class="form-control">
-      </div>
-      <input type="submit" value="Book" class="btn btn-success w-100 mt-2">
-    </form>
-  </div>
-
-  <div>
-    <% if policy(@boardgame).update? %>
-      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
-    <% end %>
-    <% if policy(@boardgame).destroy? %>
-      <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
-    <% end %>
-  </div>
->>>>>>> master
 </div>
