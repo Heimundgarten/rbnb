@@ -2,14 +2,13 @@
 <!-- Boardgame information with image and description -->
   <div class="card-boardgame">
     <div class="boardgame-info">
-      <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name, id: "boardgame-img" %>
+      <%= cl_image_tag @boardgame.photo, alt: @boardgame.name, id: "boardgame-img" %>
       <div class="description">
         <h2><%= @boardgame.name %></h2><p>(<%= @boardgame.year %>)</p>
         <p><%= @boardgame.description %></p>
         <p class="card-trip-pricing text-right"><strong>€ <%= @boardgame.price_per_day %> / per day</strong></p>
         <br>
         <br>
-        <%#= render 'availability_toggle' %>
       </div>
     </div>
     <!-- Owner info and booking information -->
