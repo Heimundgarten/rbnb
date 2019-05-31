@@ -43,15 +43,19 @@
     </div>
   </div>
   <div class="action-buttons">
+
     <% if policy(@boardgame).update? %>
       <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
     <% end %>
     <% if policy(@boardgame).destroy? %>
       <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
     <% end %>
+    <% if policy(@boardgame).update? %>
+      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
+    <% end %>
+   </div>
   </div>
 </div>
-
 
 <!-- Reviews section -->
   <div class="card p-2">
