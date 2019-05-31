@@ -19,8 +19,7 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      redirect_to boardgame_path(@review.booking.boardgame), alert: 'Your review was successfully added'
-    else
+      redirect_to boardgame_path(@review.booking.boardgame)
       render :new
     end
   end
@@ -28,8 +27,7 @@ class ReviewsController < ApplicationController
   def destroy
     authorize @review
     @review.destroy
-    redirect_to boardgame_path(@booking.boardgame), alert: 'Your review was successfully deleted'
-  end
+    redirect_to boardgame_path(@booking.boardgame)
 
   private
 

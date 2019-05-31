@@ -1,59 +1,79 @@
-<div class="container fullpage-container">
-
+<div class="container">
+<!-- Boardgame information with image and description -->
   <div class="card-boardgame">
-    <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
-    <div>
-      <h2><%= @boardgame.name %></h2><p>(<%= @boardgame.year %>)</p>
-      <p><%= @boardgame.description %></p>
-      <br>
-      <p>The owners name is: <strong><%= @boardgame.user.first_name %> <%= @boardgame.user.last_name %>   </strong></p>
-      <p>You can pick it up at:<strong> <%= @boardgame.user.address %> </strong></p>
-
-      <!-- <h2 class="card-trip-pricing"><%= @boardgame.price_per_day %></h2> -->
-      <%#= render 'availability_toggle' %>
+    <div class="boardgame-info">
+      <%= cl_image_tag @boardgame.photo, alt: @boardgame.name, id: "boardgame-img" %>
+      <div class="description">
+        <h2><%= @boardgame.name %></h2><p>(<%= @boardgame.year %>)</p>
+        <p><%= @boardgame.description %></p>
+        <p class="card-trip-pricing text-right"><strong>€ <%= @boardgame.price_per_day %> / per day</strong></p>
+        <br>
+        <br>
+      </div>
     </div>
+    <!-- Owner info and booking information -->
+    <div class="booking-info d-flex">
+      <!-- Owner info -->
+      <div class="owner-info">
+        <!-- syle this card, make it position relative and put elements accordingly -->
+          <h5><strong>You can find this game here:</strong></h5>
+          <%= cl_image_tag @boardgame.user.photo, class: "avatar" %>
+          <div class="information">
+            <p><%= @boardgame.user.first_name %> <%= @boardgame.user.last_name %></p>
+            <p><%= @boardgame.user.address %></p>
+          </div>
+      </div>
+      <!-- Booking info note: maybe flex grow 1 -->
+      <div class="booking-form">
+        <h5><strong>Book "<%= @boardgame.name %>" now</strong></h5>
+        <table class="table table-borderless">
+          <tbody>
+            <%= simple_form_for [@boardgame, @booking] do |f| %>
+              <th scope="row"><%= f.label :Start_date %></th>
+              <td><%= f.date_field :date_borrowed %></td>
+              <th scope="row"><%= f.label :Return_date %></th>
+              <td><%= f.date_field :date_returned %></td>
+          </tbody>
+        </table>
+            <%= f.submit "Book now!", class: "btn btn-outline-primary btn-sm rounded m-2
+" %>
+            <% end %>
+      </div>
+    </div>
+    <br>
+    <hr class="w-50">
   </div>
 
-   <br>
-   <br>
-
-  <div class="card p-5">
-    <h5>Book your Boardgame here: </h5>
-      <%= simple_form_for [@boardgame, @booking] do |f| %>
-        <%= f.date_field :date_borrowed %>
-        <%= f.date_field :date_returned %>
-        <%= f.submit "Book this Boardgame", class: "btn btn-outline-primary btn-sm rounded m-2" %>
-      <% end %>
-  </div>
-
+  <!-- Reviews section -->
+  <h5 class="text-center"><strong>What other users say about "<%= @boardgame.name %>"</strong></h5>
   <br>
-  <br>
-  <div class="card-reviews">
-    <h3>Past reviews: </h3>
-    <% @reviews = @boardgame.reviews %>
-    <% @reviews.each do | review| %>
-    <div class="notification-content">
-      <% review.rating.times do |s| %>
-      <i class="fas fa-star"></i>
-      <% end %>
-      <p> <%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+  <% @reviews = @boardgame.reviews.last(5).reverse %>
+  <% @reviews.each do |review| %>
+    <div class="review-card p-2"> <!-- review card (main) -->
+      <div class="general-information">
+        <div class="stars">
+          <% review.rating.times do |s| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <div class="user-information"> <!-- user name and avatar -->
+          <p><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+          <%= cl_image_tag review.booking.user.photo, crop: :fill, alt: @boardgame.name, class: "avatar" %>
+        </div>
+      </div>
+      <div class="review-content"> <!-- content -->
+        <p><%= review.content %></p>
+      </div>
+    </div>
+  <% end %>
 
-      <p><%= truncate(review.content, length: 100) %></p>
-    <% end %>
-  </div>
-
- <div class="card">
-  </div>
+  <div class="action-buttons">
+    <br>
     <% if policy(@boardgame).update? %>
       <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
     <% end %>
     <% if policy(@boardgame).destroy? %>
       <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
     <% end %>
-    <% if policy(@boardgame).update? %>
-      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
-    <% end %>
-   </div>
   </div>
 </div>
-

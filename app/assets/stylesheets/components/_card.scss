@@ -57,29 +57,36 @@
 
 .card-boardgame {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // background: white;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
-  img {
-    // height: 200px;
-    // width: 100%;
-    object-fit: scale-down;
-    position: center;
+  #boardgame-img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    margin: 20px;
   }
   h2 {
+    margin-left: 250px;
+    margin-top: 20px;
     // font-size: 16px;
     // font-weight: bold;
-    margin: 0;
   }
-  // p {
+  .description p {
+    margin-left: 250px;
   //   font-size: 12px;
   //   opacity: .7;
   //   margin: 0;
-  // }
+  }
+  .owner-information {
+    margin-left: 20px;
+    p {
+      margin: 0;
+    }
+  }
 }
 
 .card-trip-infos {
@@ -101,7 +108,29 @@
   width: 40px;
 }
 
-
+.booking-info {
+  .owner-info {
+    width: 360px;
+    padding: 0 0 0 20px;
+    position: relative;
+    .avatar {
+      position: absolute;
+      left: 20px;
+      margin-top: 5px;
+    }
+    .information {
+      position: absolute;
+      left: 75px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .booking-form {
+    flex-grow: 1;
+    margin-left: 88px;
+  }
+}
 
 // CSS for the grid of the cards
 .cards {
@@ -109,8 +138,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
-  height: 500px;
-  overflow-y: scroll;
 }
 
 // Smallest device

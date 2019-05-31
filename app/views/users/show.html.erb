@@ -36,57 +36,62 @@
       <% end %>
     </div>
   </div>
-<div class="container fullpage-container">
+
   <!-- User boardgames section -->
   <div class="user-boardgames">
     <h4 class="text-center">My Bookings</h4>
     <hr class="w-50">
-    <br>
 
-    <div class="cards">
-      <% @bookings.each do |booking| %>
-        <%= link_to booking_path(booking.id), class: "home-card-link" do %>
-          <div class="card-product rounded">
+    <% if @bookings.exists? %>
+      <div class="cards">
+      <br>
+        <% @bookings.each do |booking| %>
+          <%= link_to booking_path(booking.id), class: "home-card-link" do %>
+            <div class="card-product rounded">
               <%= cl_image_tag booking.boardgame.photo %>
-            <div class="card-product-infos">
-              <h2><%= booking.boardgame.name %></h2>
-              <p><%= truncate(booking.boardgame.description, length: 100) %></p>
-
-              <p class="price"><strong>Total Price: € <%= booking.total_price %> </strong></p>
+              <div class="card-product-infos">
+                <h2><%= booking.boardgame.name %></h2>
+                <p><%= truncate(booking.boardgame.description, length: 100) %></p>
+                <p class="price"><strong>TotalPrice: € <%= booking.total_price %> </strong></p>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <br>
-  </div>
-</div>
-<!--   <div class="user-boardgames">
-    <h4 class="text-center">Past Bookings</h4>
-    <hr class="w-50">
-    <p class="text-center">Feature coming soon...</p>
-    <br>
-  </div> -->
-
-  <!-- User reviews section -->
-  <div class="user-reviews">
-    <h4 class="text-center">My Reviews</h4>
-    <hr class="w-50">
-    <% @user.reviews.each do |review| %>
-      <table>
-        <tbody>
-          <tr>
-            <th class="label"><%= review.content %>:</th>
-            <td><%= review.rating %></td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
+    <% else %>
+      <p class="text-center">No bookings yet...</p>
     <% end %>
     <br>
+    <br>
   </div>
 
-
+  <h4 class="text-center">My submitted reviews</h4>
+  <hr class="w-50">
+  <% @reviews = @user.reviews.last(5).reverse %>
+  <% if @reviews.empty? %>
+    <p class="text-center">You haven't submitted any reviews yet...</p>
+  <% else %>
+    <% @reviews.each do |review| %>
+        <div class="review-card p-2"> <!-- review card (main) -->
+          <div class="general-information">
+            <div class="stars">
+              <% review.rating.times do |s| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+            <div class="user-information"> <!-- user name and avatar -->
+              <p><%= @user.first_name %> <%= @user.last_name %></p>
+              <%= cl_image_tag @user.photo, crop: :fill, class: "avatar" %>
+            </div>
+          </div>
+          <div class="review-content"> <!-- content -->
+            <p><%= review.content %></p>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
 </div>
+
 
 
 <script>
@@ -101,4 +106,3 @@
      )
   });
 </script>
-

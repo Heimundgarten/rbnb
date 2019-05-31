@@ -3,14 +3,8 @@ class BoardgamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    if params[:query].present?
-      @boardgames = Boardgame.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      @boardgames = Boardgame.all
-    end
-
     @boardgame = policy_scope(Boardgame)
-
+    @boardgames = Boardgame.all
 
     @users = User.where.not(latitude: nil, longitude: nil)
     @markers = @users.map do |user|
@@ -41,7 +35,7 @@ class BoardgamesController < ApplicationController
     authorize @boardgame
 
     if @boardgame.save
-      redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully added'
+      redirect_to boardgame_path(@boardgame)
     else
       render :new
     end
@@ -55,7 +49,7 @@ class BoardgamesController < ApplicationController
     authorize @boardgame
     # @boardgame = Boardgame.update(boardgame_params)
     if @boardgame.update(boardgame_params)
-      redirect_to boardgame_path(@boardgame), alert: 'The boardgame was successfully updated'
+      redirect_to boardgame_path(@boardgame)
     else
       render :edit
     end
@@ -64,7 +58,7 @@ class BoardgamesController < ApplicationController
   def destroy
     authorize @boardgame
     @boardgame.destroy
-    redirect_to boardgames_path, alert: 'The boardgame was successfully deleted'
+    redirect_to boardgames_path
   end
 
   private
