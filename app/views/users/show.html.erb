@@ -59,34 +59,33 @@
       <% end %>
     </div>
     <br>
-  </div>
-
-<!--   <div class="user-boardgames">
-    <h4 class="text-center">Past Bookings</h4>
-    <hr class="w-50">
-    <p class="text-center">Feature coming soon...</p>
-    <br>
-  </div> -->
-
-  <!-- User reviews section -->
-  <div class="user-reviews">
-    <h4 class="text-center">My Reviews</h4>
-    <hr class="w-50">
-    <% @user.reviews.each do |review| %>
-      <table>
-        <tbody>
-          <tr>
-            <th class="label"><%= review.content %>:</th>
-            <td><%= review.rating %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
     <br>
   </div>
 
-
+  <h4 class="text-center">My submitted reviews</h4>
+  <hr class="w-50">
+  <br>
+  <% @reviews = @user.reviews.last(5).reverse %>
+  <% @reviews.each do |review| %>
+    <div class="review-card p-2"> <!-- review card (main) -->
+      <div class="general-information">
+        <div class="stars">
+          <% review.rating.times do |s| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <div class="user-information"> <!-- user name and avatar -->
+          <p><%= @user.first_name %> <%= @user.last_name %></p>
+          <%= cl_image_tag @user.photo, crop: :fill, class: "avatar" %>
+        </div>
+      </div>
+      <div class="review-content"> <!-- content -->
+        <p><%= review.content %></p>
+      </div>
+    </div>
+  <% end %>
 </div>
+
 
 
 <script>
