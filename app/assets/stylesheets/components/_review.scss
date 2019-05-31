@@ -1,0 +1,23 @@
+.review-card {
+  border-color: #e4e1e5;
+  border-style: solid;
+  border-width: thin;
+  background-color: white;
+  margin: 2px;
+  width: 700px;
+  margin: 10px auto;
+  .general-information{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px;
+    .user-information{
+      display: flex;
+      .avatar {
+        margin-left: 8px;
+      }
+    }
+  }
+  .review-content {
+    padding: 0 10px;
+  }
+}

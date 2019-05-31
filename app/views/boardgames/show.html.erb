@@ -8,7 +8,7 @@
         <p><%= @boardgame.description %></p>
         <p class="card-trip-pricing text-right"><strong>€ <%= @boardgame.price_per_day %> / per day</strong></p>
         <br>
-        <hr class="w-50">
+        <br>
         <%#= render 'availability_toggle' %>
       </div>
     </div>
@@ -27,61 +27,53 @@
       <!-- Booking info note: maybe flex grow 1 -->
       <div class="booking-form">
         <h5><strong>Book "<%= @boardgame.name %>" now</strong></h5>
-        <form action>
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">From:</span>
-            <input type="date" placeholder="12/10/2017" class="form-control">
-          </div>
-
-          <div class="input-group mt-2">
-            <span class="input-group-addon" id="basic-addon1">To:</span>
-            <input type="date" placeholder="18/10/2017" class="form-control">
-          </div>
-          <input type="submit" value="Book" class="btn btn-success w-100 mt-2">
-        </form>
+        <table class="table table-borderless">
+          <tbody>
+            <%= simple_form_for [@boardgame, @booking] do |f| %>
+              <th scope="row"><%= f.label :Start_date %></th>
+              <td><%= f.date_field :date_borrowed %></td>
+              <th scope="row"><%= f.label :Return_date %></th>
+              <td><%= f.date_field :date_returned %></td>
+          </tbody>
+        </table>
+            <%= f.submit "Book now!", class: "btn btn-primary rounded" %>
+            <% end %>
       </div>
     </div>
+    <br>
+    <hr class="w-50">
   </div>
-  <div class="action-buttons">
 
+  <!-- Reviews section -->
+  <h5 class="text-center"><strong>What other users say about "<%= @boardgame.name %>"</strong></h5>
+  <br>
+  <% @reviews = @boardgame.reviews.last(5).reverse %>
+  <% @reviews.each do |review| %>
+    <div class="review-card p-2"> <!-- review card (main) -->
+      <div class="general-information">
+        <div class="stars">
+          <% review.rating.times do |s| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <div class="user-information"> <!-- user name and avatar -->
+          <p><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+          <%= cl_image_tag review.booking.user.photo, crop: :fill, alt: @boardgame.name, class: "avatar" %>
+        </div>
+      </div>
+      <div class="review-content"> <!-- content -->
+        <p><%= review.content %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="action-buttons">
+    <br>
     <% if policy(@boardgame).update? %>
       <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2" %>
     <% end %>
     <% if policy(@boardgame).destroy? %>
       <%= link_to 'Delete Boardgame', boardgame_path(@boardgame), class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure?' }, method: :delete %>
     <% end %>
-    <% if policy(@boardgame).update? %>
-      <%= link_to 'Update Boardgame', edit_boardgame_path(@boardgame) %>
-    <% end %>
-   </div>
   </div>
-</div>
-
-<!-- Reviews section -->
-  <div class="card p-2">
-    <% @reviews = @boardgame.reviews.last(5).reverse %>
-    <% @reviews.each do |review| %>
-    <div class="notification">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-      <%#= cl_image_tag @user.photo, alt: @user.last_name, @user.first_name %>
-      <div class="notification-content">
-        <% review.rating.times do |s| %>
-        <i class="fas fa-star"></i>
-        <% end %>
-        <p><%= truncate(review.content, length: 100) %></p>
-      </div>
-      <div class="notification-actions">
-        <%#= link_to "delete", review_path(@review), method: :delete %>
-        <a href="#">Delete <i class="far fa-trash-alt"></i></a>
-      </div>
-    </div>
-    <% end %>
-    <% if current_user.has_booking_to_review? %>
-    <div class="notification">
-      <img src='https://kitt.lewagon.com/placeholder/users/Eschults' class="avatar-large"/>
-      <div class="notification-content">
-        <p><%= render 'review_form' %></p>
-      </div>
-    </div>
-    <% end %>
 </div>
