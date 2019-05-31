@@ -36,7 +36,7 @@
       <% end %>
     </div>
   </div>
-<div class="container fullpage-container">
+
   <!-- User boardgames section -->
   <div class="user-boardgames">
     <h4 class="text-center">My Bookings</h4>
@@ -49,41 +49,17 @@
           <%= link_to booking_path(booking.id), class: "home-card-link" do %>
             <div class="card-product rounded">
               <%= cl_image_tag booking.boardgame.photo %>
-            <div class="card-product-infos">
-              <h2><%= booking.boardgame.name %></h2>
-              <p><%= truncate(booking.boardgame.description, length: 100) %></p>
-              <p class="price"><strong>Total Price: € <%= booking.total_price %> </strong></p>
+              <div class="card-product-infos">
+                <h2><%= booking.boardgame.name %></h2>
+                <p><%= truncate(booking.boardgame.description, length: 100) %></p>
+                <p class="price"><strong>TotalPrice: € <%= booking.total_price %> </strong></p>
+              </div>
             </div>
           <% end %>
         <% end %>
       </div>
     <% else %>
       <p class="text-center">No bookings yet...</p>
-      <% end %>
-    </div>
-    <br>
-  </div>
-</div>
-<!--   <div class="user-boardgames">
-    <h4 class="text-center">Past Bookings</h4>
-    <hr class="w-50">
-    <p class="text-center">Feature coming soon...</p>
-    <br>
-  </div> -->
-
-  <!-- User reviews section -->
-  <div class="user-reviews">
-    <h4 class="text-center">My Reviews</h4>
-    <hr class="w-50">
-    <% @user.reviews.each do |review| %>
-      <table>
-        <tbody>
-          <tr>
-            <th class="label"><%= review.content %>:</th>
-            <td><%= review.rating %></td>
-          </tr>
-        </tbody>
-      </table>
     <% end %>
     <br>
     <br>
@@ -130,4 +106,3 @@
      )
   });
 </script>
-
