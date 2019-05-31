@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :boardgame
-  has_one :review
+  has_one :review, dependent: :destroy
 
   validates :date_borrowed, :date_returned, presence: true, allow_blank: false
 

@@ -2,13 +2,23 @@
 
 <div class="container fullpage-container">
   <div class="row">
-    <div class="col-md-6 mx-auto py-5">
-        <p>Booked from <%= @booking.date_borrowed %> to the <%= @booking.date_returned %> </p>
+    <div class="col-md-10 mx-8 py-5">
+      <h2>Thank you for booking <strong><%= @booking.boardgame.name %></strong></h2>
+        <p> From the <%= @booking.date_borrowed %>
+          to the <%= @booking.date_returned %> </p>
+          <p>Total price: <%= @booking.total_price %></p>
+          <%= link_to 'Delete booking', booking_path, class:"btn btn-outline-primary btn-sm rounded m-2", data: { confirm: 'Are you sure you want to delete your account?' }, method: :delete %>
+
+          <br>
+          <br>
+          <br>
+
+          <h3>Please leave a review:</h3>
         <% if @booking.date_returned > Date.today %>
         <%= simple_form_for [@booking, @review] do |f| %>
           <%= f.input :content %>
           <%= f.input :rating %>
-          <%= f.submit "Add a review", class: "btn btn-primary" %>
+          <%= f.submit "Add a review", class: "btn btn-outline-primary btn-sm rounded m-2 " %>
           <% end %>
         <% end %>
     </div>

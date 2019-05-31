@@ -1,5 +1,5 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.input_field :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, :value => "Update your picture" , :class => "btn btn-light photo-submit"%>
+  <%= f.button :submit, :value => "Update your picture" , :class => "btn btn-outline-primary btn-sm rounded m-2"%>
 <% end %>
