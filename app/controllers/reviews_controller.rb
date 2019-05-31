@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
 
     if @review.save
       redirect_to boardgame_path(@review.booking.boardgame)
-    else
       render :new
     end
   end
@@ -29,7 +28,6 @@ class ReviewsController < ApplicationController
     authorize @review
     @review.destroy
     redirect_to boardgame_path(@booking.boardgame)
-  end
 
   private
 

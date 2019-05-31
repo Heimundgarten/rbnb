@@ -41,10 +41,10 @@
   <div class="user-boardgames">
     <h4 class="text-center">My Bookings</h4>
     <hr class="w-50">
-    <br>
 
     <% if @bookings.exists? %>
       <div class="cards">
+      <br>
         <% @bookings.each do |booking| %>
           <%= link_to booking_path(booking.id), class: "home-card-link" do %>
             <div class="card-product rounded">
