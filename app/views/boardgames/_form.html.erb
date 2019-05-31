@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fullpage-container">
   <%= simple_form_for(@boardgame) do |f| %>
     <%= f.input :name, placeholder: 'Title of the game, as displayed on ,the cover' %>
     <%= f.input :description, placeholder: 'Please add a description for the game so people not knowing this game get an idea how it works.'%>
@@ -7,7 +7,8 @@
     <%= f.number_field :price_per_day, :class => 'text_field', :step => 0.5, placeholder: "€ 2.00" %>
     <%= f.input :photo %>
     <%= f.input :photo_cache , as: :hidden %>
-    <%= f.button :submit, :value => "Submit" , :class => "btn btn-primary rounded"%>
+    <%= f.button :submit, :value => "Submit" , :class => "btn btn-outline-primary btn-sm rounded m-2"%>
   <% end %>
 </div>
+
 

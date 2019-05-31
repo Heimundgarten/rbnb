@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fullpage-container">
 
   <div class="card-boardgame">
     <%= cl_image_tag @boardgame.photo, crop: :fill, alt: @boardgame.name %>
@@ -22,7 +22,7 @@
       <%= simple_form_for [@boardgame, @booking] do |f| %>
         <%= f.date_field :date_borrowed %>
         <%= f.date_field :date_returned %>
-        <%= f.submit "Book this Boardgame", class: "btn btn-primary mx-3" %>
+        <%= f.submit "Book this Boardgame", class: "btn btn-outline-primary btn-sm rounded m-2" %>
       <% end %>
   </div>
 

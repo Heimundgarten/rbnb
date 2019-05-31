@@ -36,7 +36,7 @@
       <% end %>
     </div>
   </div>
-
+<div class="container fullpage-container">
   <!-- User boardgames section -->
   <div class="user-boardgames">
     <h4 class="text-center">My Bookings</h4>
@@ -52,7 +52,7 @@
               <h2><%= booking.boardgame.name %></h2>
               <p><%= truncate(booking.boardgame.description, length: 100) %></p>
 
-              <p class="price"><strong>TotalPrice: € <%= booking.total_price %> </strong></p>
+              <p class="price"><strong>Total Price: € <%= booking.total_price %> </strong></p>
             </div>
           </div>
         <% end %>
@@ -60,7 +60,7 @@
     </div>
     <br>
   </div>
-
+</div>
 <!--   <div class="user-boardgames">
     <h4 class="text-center">Past Bookings</h4>
     <hr class="w-50">
