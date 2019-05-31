@@ -1,56 +1,53 @@
 body {
-position: relative;
-background-color:#fff;
+  background-color: #ffffff;
 }
 
 h2 {
-text-align:center;
+  text-align: center;
 }
 
 p {
-position: absolute;
-font-size:20px;
-padding: 30px;
-bottom: 50px;
+  font-size: 20px;
 }
 
 #user_photo {
-position:absolute;
-bottom:50px;
-left:20px;
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
 }
 
 .photo-submit {
-position:absolute;
-left:30px;
+  position: absolute;
+  left: 30px;
 }
 
 .user-info {
-display:flex;
-justify-content:space-around;
-background-color:#6d8092;
-color:#fff;
-line-height:35px;
-padding:70px 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #6d8092;
+  color: #ffffff;
+  padding: 70px 0;
+  line-height: 35px;
+}
+
+.user-boardgames {
+  background-color: #f7dfcd;
+}
+
+.user-reviews {
+  background-color: #f7dfcd;
 }
 
 #profile-info {
-position:relative;
-top:45px;
-right:125px;
+position: relative;
+top: 45px;
+right: 125px;
 }
 
-.user-form-container {
-justify-content:center;
-border:solid;
-width: 400px;
-border: 5px solid #282f36;
-padding: 75px;
-margin: 45px;
-}
-
-.user-boardgames,.user-reviews {
-background-color:#f7dfcd;
+form {
+position: relative;
+top: 25px;
+left: 150px;
 }
 
 //   background-color: #fffcff;
