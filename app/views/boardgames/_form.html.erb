@@ -1,8 +1,9 @@
-<div class="container">
+
+<div class="container fullpage-container">
   <%= simple_form_for(@boardgame) do |f| %>
-    <%= f.input :name, placeholder: 'Title of the game, as displayed on ,the cover' %>
-    <%= f.input :description, placeholder: 'Please add a description for the game so people not knowing this game get an idea how it works.'%>
-    <%= f.input :year, collection: (1970..2019), prompt: "Select year of game edition"%>
+    <%= f.input :name, placeholder: 'Title of your boardgame:' %>
+    <%= f.input :description, placeholder: 'Add a description:'%>
+    <%= f.input :year, collection: (1970..2019), prompt: "Year of game edition(Optional)"%>
     <%= f.label :price_per_day %>
     <%= f.number_field :price_per_day, :class => 'text_field', :step => 0.5, placeholder: "€ 2.00" %>
     <%= f.input :photo %>
