@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     # @user = User.update(user_params)
     if @user.update(user_params)
       raise
-      redirect_to user_path(@user), alert: 'Your profile was successfully updated'
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def destroy
     authorize @user
     @user.destroy
-    redirect_to root_path, alert: 'Your profile was successfully deleted'
+    redirect_to root_path
   end
 
   private

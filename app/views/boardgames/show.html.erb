@@ -1,6 +1,5 @@
-
-<div class="container fullpage-container">
-
+<div class="container">
+<!-- Boardgame information with image and description -->
   <div class="card-boardgame">
     <div class="boardgame-info">
       <%= cl_image_tag @boardgame.photo, alt: @boardgame.name, id: "boardgame-img" %>
@@ -36,7 +35,8 @@
               <td><%= f.date_field :date_returned %></td>
           </tbody>
         </table>
-            <%= f.submit "Book now!", class: "btn btn-primary rounded" %>
+            <%= f.submit "Book now!", class: "btn btn-outline-primary btn-sm rounded m-2
+" %>
             <% end %>
       </div>
     </div>
@@ -44,23 +44,8 @@
     <hr class="w-50">
   </div>
 
-
   <!-- Reviews section -->
   <h5 class="text-center"><strong>What other users say about "<%= @boardgame.name %>"</strong></h5>
-
-   <br>
-   <br>
-
-  <div class="card p-5">
-    <h5>Book your Boardgame here: </h5>
-      <%= simple_form_for [@boardgame, @booking] do |f| %>
-        <%= f.date_field :date_borrowed %>
-        <%= f.date_field :date_returned %>
-        <%= f.submit "Book this Boardgame", class: "btn btn-outline-primary btn-sm rounded m-2" %>
-      <% end %>
-  </div>
-
-
   <br>
   <% @reviews = @boardgame.reviews.last(5).reverse %>
   <% @reviews.each do |review| %>
