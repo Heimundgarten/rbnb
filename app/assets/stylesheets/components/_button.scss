@@ -22,4 +22,16 @@
 .action-buttons {
   display: flex;
   justify-content: center;
+
+.btn-outline-primary {
+    color: #282f36;
+    border-color: #ffffff;
+    background-color: #f7dfcd;
+
+    &:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #EABAC2;
+
+    }
 }

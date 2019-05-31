@@ -4,22 +4,24 @@
   height: 600px;
   background-size: cover !important;
   display: flex;
-  padding-top: 26vh;
+  padding-top: 17vh;
   /* align-items: center; */
   justify-content: center;
   margin-bottom: 40px
 }
 .banner h1 {
-  font-size: 60px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 50px;
+    font-weight: lighter;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 13px;
+    font-family: monospace;
+    font-size: 88px;
 
 }
 .banner p {
   font-size: 25px;
-  font-weight: normal;
+  font-weight: bolder;
   color: rgb(255, 255, 255);
-  opacity: 0.9;
+  opacity: 1;
   margin-bottom: 5px;
+  font-family: monospace
 }
